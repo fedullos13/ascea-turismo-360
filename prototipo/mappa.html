@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="it" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mappa – Ascea Turismo 360</title>
+<meta name="description" content="La mappa di Ascea: borghi, luoghi da vivere e punti di interesse.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Ascea Turismo 360 – Home"><img src="assets/logo-ascea-turismo360.png" alt="Ascea Turismo 360" width="725" height="250"></a>
+    <nav class="nav-main" aria-label="Menu principale"><ul><li><a href="index.html">Home</a></li><li><a href="borghi.html">Borghi</a></li><li><a href="luoghi.html">Luoghi</a></li><li><a href="blog.html">Blog</a></li><li><a href="il-progetto.html">Il progetto</a></li><li><a href="mappa.html" aria-current="page">Mappa</a></li></ul></nav>
+    <div class="header-cta">
+      <a class="btn btn--arancio-pieno" href="dove-soggiornare.html">Dove soggiornare</a>
+      <a class="btn" href="contatti.html">Contatti</a>
+    </div>
+    <button class="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <ul><li><a href="index.html">Home</a></li><li><a href="borghi.html">Borghi</a></li><li><a href="luoghi.html">Luoghi</a></li><li><a href="blog.html">Blog</a></li><li><a href="il-progetto.html">Il progetto</a></li><li><a href="mappa.html">Mappa</a></li></ul>
+  <div class="header-cta">
+    <a class="btn btn--arancio-pieno" href="dove-soggiornare.html">Dove soggiornare</a>
+    <a class="btn" href="contatti.html">Contatti</a>
+  </div>
+</div>
+
+<main id="contenuto">
+
+<section class="section" style="padding-top:clamp(3rem,6vw,4.5rem)">
+  <div class="wrap">
+    <div class="section-head">
+      <h1 class="h-section">Esplora la mappa</h1>
+      <p class="lead">Scopri i luoghi da vivere, i punti di interesse e dove soggiornare ad Ascea.</p>
+    </div>
+    <div class="filtri" role="group" aria-label="Mostra sulla mappa" data-map-filter="#mappa-completa">
+      <button class="chip" data-filter="tutti" aria-pressed="true">Tutto</button>
+      <button class="chip" data-filter="borgo" aria-pressed="false">Borghi</button>
+      <button class="chip" data-filter="luogo" aria-pressed="false">Luoghi</button>
+    </div>
+    <div class="map map--full" id="mappa-completa" aria-label="Mappa completa di Ascea"></div>
+    <div class="map-legend"><span style="--c:#EA5E3B"><i></i>Ascea Paese</span><span style="--c:#21BAE3"><i></i>Ascea Marina</span><span style="--c:#26B2A6"><i></i>Mandia</span><span style="--c:#7C4F9F"><i></i>Terradura</span><span style="--c:#F2A81D"><i></i>Catona</span><span style="--c:#0B6585"><i></i>Luoghi da vivere</span></div>
+    <div style="margin-top:2rem"><div class="placeholder placeholder--inline"><strong>Testo in arrivo · Francesco/Ilaria</strong>Strutture ricettive sulla mappa: servono gli indirizzi delle strutture per posizionarle. Le posizioni dei luoghi sono indicative e vanno verificate.</div></div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="assets/logo-ascea-turismo360-bianco.png" alt="Ascea Turismo 360" width="725" height="250" loading="lazy">
+        <p class="footer-claim">Ascea Turismo 360 è un progetto dedicato alla scoperta di Ascea.</p>
+      </div>
+      <div>
+        <h2>Navigazione</h2>
+        <ul><li><a href="index.html">Home</a></li><li><a href="borghi.html">Borghi</a></li><li><a href="luoghi.html">Luoghi</a></li><li><a href="blog.html">Blog</a></li><li><a href="il-progetto.html">Il progetto</a></li><li><a href="mappa.html">Mappa</a></li></ul>
+      </div>
+      <div>
+        <h2>Informazioni</h2>
+        <ul>
+          <li><a href="https://asceaturismo.com/cookie-policy/">Cookie policy</a></li>
+          <li><a href="https://asceaturismo.com/privacy-policy/">Dichiarazione sulla privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Seguici</h2>
+        <div class="social">
+          <a href="#" aria-label="Facebook (link da inserire)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg></a>
+          <a href="#" aria-label="Instagram (link da inserire)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg></a>
+        </div>
+        <div class="footer-enti">
+          <div class="loghi">
+            <img src="assets/logo-comune.png" alt="Comune di Ascea" loading="lazy">
+            <img src="assets/logo-ministero.jpg" alt="Ministero dell’Interno" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Ascea Turismo 360. Tutti i diritti riservati.<span>|</span>by Qcore Agency</div>
+  </div>
+</footer>
+<div class="proto-note" role="note">Prototipo QCORE · bozza per revisione <button aria-label="Chiudi nota">×</button></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script><script>window.ASCEA_PUNTI=[{"tipo": "borgo", "id": "ascea-paese", "nome": "Ascea Paese", "sotto": "Borgo", "lat": 40.1416, "lng": 15.1858, "colore": "#EA5E3B", "url": "borgo-ascea-paese.html"}, {"tipo": "borgo", "id": "ascea-marina", "nome": "Ascea Marina", "sotto": "Borgo", "lat": 40.1454, "lng": 15.1679, "colore": "#21BAE3", "url": "borgo-ascea-marina.html"}, {"tipo": "borgo", "id": "mandia", "nome": "Mandia", "sotto": "Borgo", "lat": 40.1538, "lng": 15.2499, "colore": "#26B2A6", "url": "borgo-mandia.html"}, {"tipo": "borgo", "id": "terradura", "nome": "Terradura", "sotto": "Borgo", "lat": 40.1566, "lng": 15.2179, "colore": "#7C4F9F", "url": "borgo-terradura.html"}, {"tipo": "borgo", "id": "catona", "nome": "Catona", "sotto": "Borgo", "lat": 40.1497, "lng": 15.2361, "colore": "#F2A81D", "url": "borgo-catona.html"}, {"tipo": "luogo", "id": "parco-archeologico-velia", "nome": "Parco Archeologico di Elea Velia", "sotto": "Storia", "lat": 40.1606, "lng": 15.1545, "colore": "#0B6585", "url": "luogo-parco-archeologico-velia.html"}, {"tipo": "luogo", "id": "la-scogliera", "nome": "La Scogliera", "sotto": "Mare", "lat": 40.129, "lng": 15.1905, "colore": "#0B6585", "url": "luogo-la-scogliera.html"}, {"tipo": "luogo", "id": "palazzo-ricci", "nome": "Palazzo Ricci", "sotto": "Architettura", "lat": 40.1419, "lng": 15.1866, "colore": "#0B6585", "url": "luogo-palazzo-ricci.html"}, {"tipo": "luogo", "id": "santuario-madonna-del-carmine", "nome": "Santuario Madonna del Carmine", "sotto": "Spiritualità", "lat": 40.1555, "lng": 15.216, "colore": "#0B6585", "url": "luogo-santuario-madonna-del-carmine.html"}, {"tipo": "luogo", "id": "sentiero-degli-innamorati", "nome": "Sentiero degli Innamorati", "sotto": "Natura", "lat": 40.1272, "lng": 15.196, "colore": "#0B6585", "url": "luogo-sentiero-degli-innamorati.html"}, {"tipo": "luogo", "id": "sentiero-aurella", "nome": "Sentiero Aurella", "sotto": "Natura", "lat": 40.1432, "lng": 15.179, "colore": "#0B6585", "url": "luogo-sentiero-aurella.html"}, {"tipo": "luogo", "id": "sentiero-del-carmelo", "nome": "Sentiero del Carmelo", "sotto": "Natura", "lat": 40.15, "lng": 15.203, "colore": "#0B6585", "url": "luogo-sentiero-del-carmelo.html"}, {"tipo": "luogo", "id": "museo-del-mare", "nome": "Museo del Mare – mUMANA", "sotto": "Storia", "lat": 40.1438, "lng": 15.1712, "colore": "#0B6585", "url": "luogo-museo-del-mare.html"}];</script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
