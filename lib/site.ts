@@ -13,7 +13,7 @@ export const site = {
   phoneHref: "+390974977008",
   address: "Via XXIV Maggio, 84046 Ascea SA",
   vat: "03519370658",
-  footerClaim: "Ascea Turismo 360 è un progetto dedicato alla scoperta di Ascea.",
+  footerClaim: "Ascea Turismo 360 è un progetto finanziato dal Ministero dell’interno e gestito dal Comune di Ascea.",
   funding: "Ascea Turismo 360 è un progetto finanziato dal Ministero dell’interno e gestito dal Comune di Ascea.",
   // da avere: link delle pagine social
   social: { facebook: "", instagram: "" },
@@ -54,9 +54,9 @@ export const home = {
     title: ["Ascea Turismo 360:", "una finestra sul territorio"],
     // HTML con i grassetti del doc
     paragraphs: [
-      "<strong>Ascea Turismo 360 </strong>è il<strong> portale </strong>dedicato alla<strong> scoperta di Ascea. </strong>Una finestra sul territorio pensata per accompagnare visitatori e viaggiatori alla scoperta di tutte le sue bellezze, dai luoghi più iconici ai meno conosciuti, dalle esperienze da vivere ai posti in cui soggiornare.",
+      "<strong>Ascea Turismo 360 </strong>è il<strong> portale </strong>dedicato alla<strong> scoperta di Ascea. </strong>Una finestra sul territorio pensata per accompagnare visitatori e viaggiatori alla scoperta di tutte le sue bellezze, dai luoghi più iconici ai meno conosciuti e alle esperienze da vivere.",
       "La <strong>lunghissima spiaggia di Ascea Marina,</strong> il fascino del<strong> Parco Archeologico di Velia</strong>, i percorsi della<strong> rete sentieristica</strong>, <strong>Palazzo De Dominicis-Ricci</strong> ad <strong>Ascea Capoluogo</strong>, il <strong>Santuario della Madonna del Carmine</strong> a <strong>Catona</strong> sono solo alcuni dei luoghi di interesse storico, culturale e naturalistico presenti nel portale.",
-      "Uno strumento che attraverso approfondimenti e informazioni utili, vuole essere il punto di riferimento per chi desidera conoscere Ascea e anche prenotare la struttura ricettiva presso la quale soggiornare.<br>Esplora, visita, innamorati di Ascea.",
+      "Uno strumento che attraverso approfondimenti e informazioni utili, vuole essere il punto di riferimento per chi desidera conoscere Ascea.<br>Esplora, visita, innamorati di Ascea.",
     ],
     cta: { label: "Scopri di più", href: "/il-progetto/" },
     image: "panoramica-velia" as PicName,
@@ -74,7 +74,7 @@ export const home = {
   },
   mappa: {
     title: "Esplora la mappa",
-    text: "Scopri i luoghi da vivere, i punti di interesse e dove soggiornare ad Ascea.",
+    text: "Scopri i luoghi da vivere e i punti di interesse di Ascea.",
     cta: { label: "Apri la mappa completa", href: "/mappa/" },
   },
 };
@@ -144,6 +144,7 @@ export type Luogo = {
   lng: number;
   article?: string; // chiave in lib/articoli.json
   note?: string; // riquadro "testo in arrivo"
+  tour?: string; // Virtual Tour a 360° del sito attuale (realsee.ai)
 };
 
 // I primi 5 sono quelli scelti da Ilaria per la Home
@@ -155,7 +156,7 @@ export const luoghi: Luogo[] = [
     slug: "santuario-madonna-del-carmine", name: "Santuario Madonna del Carmine", cat: "Spiritualità", image: "santuario-carmine", borgo: "catona", lat: 40.1555, lng: 15.216, article: "santuario",
     note: "Eventuale testo dedicato al Santuario. Intanto è riportato il paragrafo presente oggi nella pagina “Sentiero del Carmelo” del sito attuale.",
   },
-  { slug: "sentiero-degli-innamorati", name: "Sentiero degli Innamorati", cat: "Natura", image: "sentiero-innamorati", borgo: "ascea-marina", lat: 40.1272, lng: 15.196, article: "sentiero-degli-innamorati-ascea" },
+  { slug: "sentiero-degli-innamorati", name: "Sentiero degli Innamorati", cat: "Natura", image: "sentiero-innamorati", borgo: "ascea-marina", lat: 40.1272, lng: 15.196, article: "sentiero-degli-innamorati-ascea", tour: "https://realsee.ai/ybkkPVWR" },
   // dal sito attuale (Itinerari)
   { slug: "sentiero-aurella", name: "Sentiero Aurella", cat: "Natura", image: "sentiero-aurella", borgo: "ascea-paese", lat: 40.1432, lng: 15.179, article: "sentiero-aurella-ascea" },
   { slug: "sentiero-del-carmelo", name: "Sentiero del Carmelo", cat: "Natura", image: "sentiero-carmelo", borgo: "catona", lat: 40.15, lng: 15.203, article: "sentiero-del-carmelo-ascea" },

@@ -58,6 +58,14 @@ export default async function LuogoPage({ params }: PageProps<"/luoghi/[slug]">)
               <Placeholder inline>{l.note}</Placeholder>
             </>
           )}
+          {l.tour && (
+            <>
+              <h2>Virtual Tour</h2>
+              <div className="tour">
+                <iframe src={l.tour} title={`Virtual Tour a 360° – ${l.name}`} loading="lazy" allow="fullscreen; xr-spatial-tracking; gyroscope; accelerometer" allowFullScreen />
+              </div>
+            </>
+          )}
         </div>
       </section>
 

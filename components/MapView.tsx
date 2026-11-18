@@ -1,13 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Map as LMap, LayerGroup } from "leaflet";
-import "leaflet/dist/leaflet.css";
+import type { Map as MLMap, Marker } from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
 import { punti, type Punto } from "@/lib/site";
 
-// Mappa Leaflet con i borghi e i luoghi. Le posizioni sono indicative (da verificare).
-// Tile OpenStreetMap per ora; in produzione un provider con chiave (Pisciotta usa MapTiler).
+// Mappa vettoriale MapLibre GL con i borghi e i luoghi, come Pisciotta. Le posizioni sono indicative (da verificare).
+// Stile OpenFreeMap "Positron" (gratuito, senza chiave). Con la chiave MapTiler: "https://api.maptiler.com/maps/dataviz-v4/style.json?key=…" (lo stile di Pisciotta).
+const MAP_STYLE = "https://tiles.openfreemap.org/styles/positron";
+
 type Filter = "tutti" | Punto["tipo"];
+
+const pinSvg = (color: string) =>
+  `<svg viewBox="0 0 30 40" width="30" height="40" aria-hidden="true"><path d="M15 0C6.7 0 0 6.6 0 14.8 0 25.9 15 40 15 40s15-14.1 15-25.2C30 6.6 23.3 0 15 0z" fill="${color}"/><circle cx="15" cy="14.5" r="5.5" fill="#fff"/></svg>`;
 
 export function MapView({
   only,
@@ -21,53 +26,66 @@ export function MapView({
   label?: string;
 }) {
   const el = useRef<HTMLDivElement>(null);
-  const map = useRef<LMap | null>(null);
-  const layers = useRef<Partial<Record<Punto["tipo"], LayerGroup>>>({});
+  const markers = useRef<{ tipo: Punto["tipo"]; marker: Marker }[]>([]);
   const [filter, setFilter] = useState<Filter>("tutti");
 
   useEffect(() => {
     let cancelled = false;
+    let map: MLMap | null = null;
     (async () => {
-      const L = await import("leaflet");
-      if (cancelled || !el.current || map.current) return;
-      const m = L.map(el.current, { scrollWheelZoom: false });
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }).addTo(m);
-      const icon = (color: string) =>
-        L.divIcon({
-          className: "pin",
-          iconSize: [30, 40],
-          iconAnchor: [15, 40],
-          popupAnchor: [0, -36],
-          html: `<svg viewBox="0 0 30 40" aria-hidden="true"><path d="M15 0C6.7 0 0 6.6 0 14.8 0 25.9 15 40 15 40s15-14.1 15-25.2C30 6.6 23.3 0 15 0z" fill="${color}"/><circle cx="15" cy="14.5" r="5.5" fill="#fff"/></svg>`,
-        });
+      const { default: maplibregl } = await import("maplibre-gl");
+      if (cancelled || !el.current) return;
       const pts = punti.filter((p) => !only || only === `${p.tipo}:${p.slug}`);
+      map = new maplibregl.Map({
+        container: el.current,
+        style: MAP_STYLE,
+        center: pts[0] ? [pts[0].lng, pts[0].lat] : [15.19, 40.14],
+        zoom: 13,
+        maxZoom: 18,
+        cooperativeGestures: true, // zoom con ctrl/⌘ + rotella, due dita su mobile: la pagina continua a scorrere
+        attributionControl: { compact: true },
+        locale: {
+          "CooperativeGesturesHandler.WindowsHelpText": "Usa Ctrl + rotella per ingrandire la mappa",
+          "CooperativeGesturesHandler.MacHelpText": "Usa ⌘ + rotella per ingrandire la mappa",
+          "CooperativeGesturesHandler.MobileHelpText": "Usa due dita per spostare la mappa",
+          "NavigationControl.ZoomIn": "Ingrandisci",
+          "NavigationControl.ZoomOut": "Riduci",
+          "NavigationControl.ResetBearing": "Orienta a nord",
+        },
+      });
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+
       for (const p of pts) {
-        const popup = `<strong>${p.name}</strong><span>${p.sub}</span>${only ? "" : `<br><a href="${p.href}">Scopri di più →</a>`}`;
-        const marker = L.marker([p.lat, p.lng], { icon: icon(p.color), title: p.name, alt: p.name }).bindPopup(popup);
-        (layers.current[p.tipo] ??= L.layerGroup().addTo(m)).addLayer(marker);
+        const pin = document.createElement("div");
+        pin.className = "pin";
+        pin.innerHTML = pinSvg(p.color);
+        pin.setAttribute("aria-label", p.name);
+        pin.setAttribute("role", "img");
+        const popup = new maplibregl.Popup({ offset: [0, -36], closeButton: true, maxWidth: "260px" }).setHTML(
+          `<strong>${p.name}</strong><span>${p.sub}</span>${only ? "" : `<br><a href="${p.href}">Scopri di più →</a>`}`,
+        );
+        const marker = new maplibregl.Marker({ element: pin, anchor: "bottom" }).setLngLat([p.lng, p.lat]).setPopup(popup).addTo(map);
+        markers.current.push({ tipo: p.tipo, marker });
       }
-      if (only && pts[0]) m.setView([pts[0].lat, pts[0].lng], 14);
-      else m.fitBounds(pts.map((p) => [p.lat, p.lng] as [number, number]), { padding: [36, 36] });
-      map.current = m;
+
+      if (!only && pts.length > 1) {
+        const bounds = new maplibregl.LngLatBounds();
+        pts.forEach((p) => bounds.extend([p.lng, p.lat]));
+        map.fitBounds(bounds, { padding: 50, maxZoom: 14, duration: 0 });
+      }
     })();
     return () => {
       cancelled = true;
-      map.current?.remove();
-      map.current = null;
-      layers.current = {};
+      map?.remove();
+      markers.current = [];
     };
   }, [only]);
 
   useEffect(() => {
-    const m = map.current;
-    if (!m) return;
-    for (const [tipo, layer] of Object.entries(layers.current)) {
-      if (!layer) continue;
-      if (filter === "tutti" || filter === tipo) layer.addTo(m);
-      else m.removeLayer(layer);
+    for (const { tipo, marker } of markers.current) {
+      const show = filter === "tutti" || filter === tipo;
+      marker.getElement().style.display = show ? "" : "none";
+      if (!show) marker.getPopup()?.remove();
     }
   }, [filter]);
 

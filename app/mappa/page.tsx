@@ -26,7 +26,7 @@ export default function Mappa() {
         </div>
         <div className="mt-cta">
           <Placeholder who="Francesco/Ilaria" inline>
-            Strutture ricettive sulla mappa: servono gli indirizzi delle strutture per posizionarle. Le posizioni dei luoghi sono indicative e vanno verificate.
+            Le posizioni dei luoghi sono indicative e vanno verificate.
           </Placeholder>
         </div>
       </div>

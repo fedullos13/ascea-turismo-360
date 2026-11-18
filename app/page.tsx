@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Pic } from "@/components/Pic";
 import { CardBorgo, CardLuogo, CardNews, SectionHead } from "@/components/Cards";
 import { MapView } from "@/components/MapView";
+import { HeroTrack } from "@/components/HeroTrack";
 import { borghi, heroCols, home, luoghi, news } from "@/lib/site";
 
 // Home: stessa sequenza di sezioni di pisciottaborgovivo.it, copy di Ilaria
@@ -9,19 +10,23 @@ export default function Home() {
   const { hero, intro } = home;
   return (
     <>
-      {/* Apertura: collage di foto che scorre con lo scroll + titolo */}
+      {/* Apertura: collage di foto che scorre in loop + titolo */}
       <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-track" aria-hidden="true">
-          {heroCols.map((col, i) => (
-            <div key={i} className={`hero-col${col.size === "xl" ? " hero-col--xl" : ""}${col.hideSm ? " hero-col--hide-sm" : ""}`}>
-              {col.pics.map((p) => (
-                <figure key={p.name} className={`r-${p.ratio}`}>
-                  <Pic name={p.name} sizes={col.size === "xl" ? "(max-width: 760px) 60vw, 25vw" : "(max-width: 760px) 30vw, 13vw"} priority />
-                </figure>
+        <HeroTrack>
+          {[0, 1].map((copy) => (
+            <div key={copy} className="hero-group">
+              {heroCols.map((col, i) => (
+                <div key={i} className={`hero-col${col.size === "xl" ? " hero-col--xl" : ""}${col.hideSm ? " hero-col--hide-sm" : ""}`}>
+                  {col.pics.map((p) => (
+                    <figure key={p.name} className={`r-${p.ratio}`}>
+                      <Pic name={p.name} sizes={col.size === "xl" ? "(max-width: 760px) 60vw, 25vw" : "(max-width: 760px) 30vw, 13vw"} priority />
+                    </figure>
+                  ))}
+                </div>
               ))}
             </div>
           ))}
-        </div>
+        </HeroTrack>
         <div className="wrap hero-copy">
           <h1 id="hero-title" className="h-display">
             {hero.title[0]} <b>{hero.title[1]}</b>

@@ -1,19 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans } from "next/font/google";
+import { Dosis } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Font del sito attuale di Ascea Turismo 360, scaricato in fase di build e servito dal sito
-const dmSans = DM_Sans({ variable: "--font-dm-sans", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], display: "swap" });
+// Dosis (Google Fonts), lo stesso di Pisciotta Borgo Vivo: variabile 200–800, scaricato in fase di build e servito dal sito
+const dosis = Dosis({ variable: "--font-dosis", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.name} – ${site.claim}`, template: `%s – ${site.name}` },
   description:
-    "Ascea Turismo 360 è il portale dedicato alla scoperta di Ascea: borghi, luoghi da vivere, news ed eventi, mappa e dove soggiornare.",
+    "Ascea Turismo 360 è il portale dedicato alla scoperta di Ascea: borghi, luoghi da vivere, news ed eventi e mappa.",
   openGraph: { type: "website", locale: "it_IT", siteName: site.name },
   // bozza: da togliere alla pubblicazione
   robots: { index: false, follow: false },
@@ -26,7 +26,7 @@ const staticScript = `if(location.search.indexOf('static')>-1)document.documentE
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="it" className={dmSans.variable} suppressHydrationWarning>
+    <html lang="it" className={dosis.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: staticScript }} />
       </head>

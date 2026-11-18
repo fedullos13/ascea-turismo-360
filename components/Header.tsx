@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav } from "@/lib/site";
 
-// Header fisso come Pisciotta Borgo Vivo: logo, menu al centro, "Dove soggiornare" e "Contatti" a destra.
+// Header fisso come Pisciotta Borgo Vivo: logo, menu al centro, "Contatti" a destra.
 // Sotto i 1180 px: hamburger e menu a tutto schermo.
 export function Header() {
   const path = usePathname();
@@ -30,9 +30,6 @@ export function Header() {
   const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
   const ctas = (
     <div className="header-cta">
-      <Link className="btn btn--arancio-pieno" href="/dove-soggiornare/" onClick={() => setOpen(false)}>
-        Dove soggiornare
-      </Link>
       <Link className="btn" href="/contatti/" onClick={() => setOpen(false)}>
         Contatti
       </Link>
