@@ -181,7 +181,7 @@ export const news: News[] = [
     url: "https://www.ansa.it/campania/notizie/2026/09/15/nel-cilento-due-centenari-festeggiati-in-pochi-giorni_d9ea7c49-4e5d-4ee9-96cf-909e3d9beae4.html",
   },
   {
-    type: "News", title: "“La Rotta dei Focei” ponte nel Mediterraneo", source: "la Repubblica Napoli", image: "news-repubblica",
+    type: "News", title: "“La Rotta dei Focei” ponte nel Mediterraneo", source: "La Repubblica - Napoli", image: "news-repubblica",
     url: "https://napoli.repubblica.it/commenti/2026/05/13/news/la_rotta_dei_foceiponte_nel_mediterraneo-425341943/",
   },
 ];
