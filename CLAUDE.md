@@ -59,6 +59,6 @@ Stesse tecnologie del sito RLB e del sito di Francesco, richiesto da Francesco i
 
 ## Stato al 17/11/2026 (fine giornata)
 - Sito Next.js completo con tutte le pagine; lint ok, export in `out/` completo, verificato in Chrome (desktop e telefono).
-- Lavoro salvato in Git (repository locale, nessun remoto).
+- Lavoro salvato in Git e su GitHub: repository **privato** https://github.com/fedullos13/ascea-turismo-360 (branch `main`, dal 18/11/2026). Dopo ogni modifica: commit e `git push`.
 - In sospeso: aggiornamento di sicurezza di Next.js (vedi Comandi), da far decidere a Francesco.
 - Per ripartire: `npm run dev` (3002) oppure `npm run build` + `npm run preview` (4175).
