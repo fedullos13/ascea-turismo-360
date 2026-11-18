@@ -172,7 +172,10 @@ export const getLuogo = (slug: string) => luoghi.find((l) => l.slug === slug);
 /* ------------------------------------------------------------------ NEWS (link indicati da Ilaria) */
 export type News = { type: "News" | "Video"; title?: string; source: string; image: PicName; url: string };
 export const news: News[] = [
-  { type: "Video", source: "Facebook", image: "tramonto", url: "https://www.facebook.com/reel/1109105914862375" }, // titolo da definire
+  {
+    type: "Video", title: "Ad Ascea, nel Cilento, le tartarughe Tonino e Mattiele tornano in mare: il momento del rilascio.",
+    source: "Facebook", image: "news-tartarughe", url: "https://www.facebook.com/reel/1109105914862375",
+  },
   {
     type: "News", title: "Nel Cilento due centenari festeggiati in pochi giorni", source: "ANSA", image: "news-ansa",
     url: "https://www.ansa.it/campania/notizie/2026/09/15/nel-cilento-due-centenari-festeggiati-in-pochi-giorni_d9ea7c49-4e5d-4ee9-96cf-909e3d9beae4.html",

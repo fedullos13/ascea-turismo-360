@@ -48,7 +48,7 @@ Stesse tecnologie del sito RLB e del sito di Francesco, richiesto da Francesco i
 
 ## Aperti
 - Testi delle pagine interne (borghi, Velia, Scogliera, Santuario, Il progetto, Dove soggiornare): da Ilaria.
-- Titolo del reel Facebook (News); link Facebook e Instagram del footer.
+- Link Facebook e Instagram del footer.
 - Foto della brochure (Palazzo Ricci, Santuario) e due foto Drive non accessibili (`cilento_horizon_ascea_2.webp`, `7CCFEB48….JPEG`).
 - Foto di Ascea Paese, presa dalla Pro Loco: verificare che ritragga il capoluogo.
 - Posizioni della mappa indicative.
