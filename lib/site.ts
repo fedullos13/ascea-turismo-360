@@ -174,7 +174,7 @@ export type News = { type: "News" | "Video"; title?: string; source: string; ima
 export const news: News[] = [
   {
     type: "Video", title: "Ad Ascea, nel Cilento, le tartarughe Tonino e Mattiele tornano in mare: il momento del rilascio",
-    source: "Facebook", image: "news-tartarughe", url: "https://www.facebook.com/reel/1109105914862375",
+    source: "La Repubblica", image: "news-tartarughe", url: "https://www.facebook.com/reel/1109105914862375",
   },
   {
     type: "News", title: "Nel Cilento due centenari festeggiati in pochi giorni", source: "ANSA", image: "news-ansa",
