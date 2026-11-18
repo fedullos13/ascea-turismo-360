@@ -173,7 +173,7 @@ export const getLuogo = (slug: string) => luoghi.find((l) => l.slug === slug);
 export type News = { type: "News" | "Video"; title?: string; source: string; image: PicName; url: string };
 export const news: News[] = [
   {
-    type: "Video", title: "Ad Ascea, nel Cilento, le tartarughe Tonino e Mattiele tornano in mare: il momento del rilascio.",
+    type: "Video", title: "Ad Ascea, nel Cilento, le tartarughe Tonino e Mattiele tornano in mare: il momento del rilascio",
     source: "Facebook", image: "news-tartarughe", url: "https://www.facebook.com/reel/1109105914862375",
   },
   {
