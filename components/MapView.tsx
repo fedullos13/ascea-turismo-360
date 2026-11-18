@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Map as MLMap, Marker } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { punti, type Punto } from "@/lib/site";
+import { asset } from "@/lib/base";
 
 // Mappa vettoriale MapLibre GL con i borghi e i luoghi, come Pisciotta. Le posizioni sono indicative (da verificare).
 // Stile OpenFreeMap "Positron" (gratuito, senza chiave). Con la chiave MapTiler: "https://api.maptiler.com/maps/dataviz-v4/style.json?key=…" (lo stile di Pisciotta).
@@ -62,7 +63,7 @@ export function MapView({
         pin.setAttribute("aria-label", p.name);
         pin.setAttribute("role", "img");
         const popup = new maplibregl.Popup({ offset: [0, -36], closeButton: true, maxWidth: "260px" }).setHTML(
-          `<strong>${p.name}</strong><span>${p.sub}</span>${only ? "" : `<br><a href="${p.href}">Scopri di più →</a>`}`,
+          `<strong>${p.name}</strong><span>${p.sub}</span>${only ? "" : `<br><a href="${asset(p.href)}">Scopri di più →</a>`}`,
         );
         const marker = new maplibregl.Marker({ element: pin, anchor: "bottom" }).setLngLat([p.lng, p.lat]).setPopup(popup).addTo(map);
         markers.current.push({ tipo: p.tipo, marker });

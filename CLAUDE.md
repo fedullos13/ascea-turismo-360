@@ -60,5 +60,7 @@ Stesse tecnologie del sito RLB e del sito di Francesco, richiesto da Francesco i
 ## Stato al 17/11/2026 (fine giornata)
 - Sito Next.js completo con tutte le pagine; lint ok, export in `out/` completo, verificato in Chrome (desktop e telefono).
 - Lavoro salvato in Git e su GitHub: repository **privato** https://github.com/fedullos13/ascea-turismo-360 (branch `main`, dal 18/11/2026). Dopo ogni modifica: commit e `git push`.
+- **Anteprima per Ilaria e il team: https://fedullos13.github.io/ascea-turismo-360/** (GitHub Pages). Il workflow `.github/workflows/pages.yml` a ogni push su `main` fa la build con `NEXT_PUBLIC_BASE_PATH=/ascea-turismo-360` e pubblica `out/`. In locale e sul dominio finale il percorso base è vuoto. Per `<img>`, `srcset` e link scritti a mano si usa `asset()` di `lib/base.ts` (i `<Link>` di Next lo aggiungono da soli).
+- ⚠️ Il repository è **pubblico** (necessario per GitHub Pages col piano gratuito, scelta di Francesco del 18/11/2026): codice, testi, foto e questo file sono visibili a tutti. Il sito è comunque `noindex`.
 - In sospeso: aggiornamento di sicurezza di Next.js (vedi Comandi), da far decidere a Francesco.
 - Per ripartire: `npm run dev` (3002) oppure `npm run build` + `npm run preview` (4175).

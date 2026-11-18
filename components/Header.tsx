@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav } from "@/lib/site";
+import { asset } from "@/lib/base";
 
 // Header fisso come Pisciotta Borgo Vivo: logo, menu al centro, "Contatti" a destra.
 // Sotto i 1180 px: hamburger e menu a tutto schermo.
@@ -41,7 +42,7 @@ export function Header() {
       <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
         <div className="wrap">
           <Link className="brand" href="/" aria-label="Ascea Turismo 360 – Home">
-            <img src="/brand/logo-ascea-turismo360.png" alt="Ascea Turismo 360" width={725} height={250} />
+            <img src={asset("/brand/logo-ascea-turismo360.png")} alt="Ascea Turismo 360" width={725} height={250} />
           </Link>
           <nav className="nav-main" aria-label="Menu principale">
             <ul>

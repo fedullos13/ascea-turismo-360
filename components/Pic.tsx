@@ -1,4 +1,5 @@
 import images from "@/lib/images.json";
+import { asset } from "@/lib/base";
 
 type Name = keyof typeof images;
 
@@ -18,14 +19,14 @@ export function Pic({
   className?: string;
 }) {
   const { w, h, widths } = images[name];
-  const set = (ext: string) => widths.map((x) => `/img/opt/${name}-${x}.${ext} ${x}w`).join(", ");
+  const set = (ext: string) => widths.map((x) => `${asset(`/img/opt/${name}-${x}.${ext}`)} ${x}w`).join(", ");
   const fallback = widths.find((x) => x >= 1200) ?? widths.at(-1);
   return (
     <picture>
       <source type="image/avif" srcSet={set("avif")} sizes={sizes} />
       <source type="image/webp" srcSet={set("webp")} sizes={sizes} />
       <img
-        src={`/img/opt/${name}-${fallback}.jpg`}
+        src={asset(`/img/opt/${name}-${fallback}.jpg`)}
         srcSet={set("jpg")}
         sizes={sizes}
         width={w}

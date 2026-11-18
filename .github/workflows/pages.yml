@@ -1,0 +1,47 @@
+# Anteprima su GitHub Pages: a ogni push su main costruisce il sito e pubblica la cartella out/
+# all'indirizzo https://fedullos13.github.io/ascea-turismo-360/
+name: Anteprima GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Next 16.4.3 chiude la build con l'avviso di sicurezza anche quando l'export è completo:
+      # la build è valida se out/index.html esiste.
+      - name: Build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /ascea-turismo-360
+        run: npm run build || test -f out/index.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
