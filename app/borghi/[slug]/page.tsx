@@ -33,7 +33,7 @@ export default async function BorgoPage({ params }: PageProps<"/borghi/[slug]">)
         tint={color}
         crumbs={[
           { href: "/", label: "Home" },
-          { href: "/borghi/", label: "Borghi" },
+          { href: "/borghi/", label: "Paesi" },
         ]}
       />
 
@@ -84,7 +84,7 @@ export default async function BorgoPage({ params }: PageProps<"/borghi/[slug]">)
 
       <section className="section section--sabbia">
         <div className="wrap">
-          <SectionHead title="Gli altri borghi" />
+          <SectionHead title="Gli altri paesi" />
           <div className="grid-borghi grid-borghi--4">
             {borghi
               .filter((x) => x.slug !== b.slug)

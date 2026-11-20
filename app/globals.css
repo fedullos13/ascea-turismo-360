@@ -275,6 +275,11 @@ main { padding-top: var(--header-h); }
 /* ---------- Mappa ---------- */
 .map-box { background: var(--sabbia); border-radius: calc(var(--raggio) * 1.5); padding: clamp(1.5rem, 4vw, 4rem); display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
 .map-box .h-section { margin-bottom: 1.5rem; }
+/* Home: sezione mappa sul verde acqua del logo, come sul sito attuale */
+.section--verde { background: radial-gradient(120% 90% at 100% 0%, #33CBC3 0%, transparent 55%), var(--verde); color: #fff; }
+.section--verde .map-box { background: transparent; padding: 0; }
+.section--verde .h-section { color: #fff; }
+.section--verde .lead { color: rgba(255, 255, 255, .95); }
 .map-box .btn { margin-top: 2rem; }
 .map { width: 100%; aspect-ratio: 1 / .9; border-radius: var(--raggio); overflow: hidden; background: #e8eef0; z-index: 1; }
 .map--full { aspect-ratio: auto; height: min(72vh, 680px); }

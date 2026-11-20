@@ -45,8 +45,8 @@ export type Tone = keyof typeof tones;
 export const home = {
   hero: {
     title: "Ascea Turismo",
-    // foto statica a tutta larghezza, come sul sito attuale (20/11/2026): da sostituire con la panoramica QCORE
-    image: "panoramica-golfo" as PicName,
+    // foto statica a tutta larghezza, come sul sito attuale: drone QCORE (Drive, cilento_horizon_ascea_2.webp)
+    image: "hero-ascea" as PicName,
     subtitle: "La guida ufficiale di Ascea",
     ctaPrimary: { label: "Scopri il progetto", href: "/il-progetto/" },
     ctaSecondary: { label: "Scopri Ascea", href: "/borghi/" },

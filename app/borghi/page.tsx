@@ -3,14 +3,14 @@ import { CardBorgo, PageHero } from "@/components/Cards";
 import { borghi, home } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "I borghi",
+  title: "Paesi",
   description: "Ascea Paese, Ascea Marina, Mandia, Terradura e Catona: i borghi di Ascea.",
 };
 
 export default function Borghi() {
   return (
     <>
-      <PageHero title={home.borghi.title} subtitle={home.borghi.subtitle} image="panoramica-golfo" />
+      <PageHero title="Paesi" subtitle={home.borghi.subtitle} image="panoramica-golfo" />
       <section className="section">
         <div className="wrap">
           <div className="grid-borghi-big">

@@ -98,8 +98,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Esplora la mappa */}
-      <section className="section">
+      {/* Esplora la mappa: fondo verde acqua come sul sito attuale */}
+      <section className="section section--verde">
         <div className="wrap">
           <div className="map-box" data-reveal="1">
             <div>

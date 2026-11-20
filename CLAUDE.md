@@ -4,7 +4,7 @@
 
 Richiesta di Irene e Biagio (17/11/2026) a Francesco e Ilaria. Integra il `CLAUDE.md` generale di QCORE.
 - **Struttura e layout:** come [pisciottaborgovivo.it](https://pisciottaborgovivo.it), anche questo un sito QCORE.
-- **Differenziarsi da Pisciotta** (Biagio e Irene, 20/11/2026): il sito sembrava troppo simile, quindi si riprendono i colori del sito attuale: footer giallo `#FAB836` con testo scuro e barra finale `#ECA10E`, bottoni principali arancio `#EA5E3B`.
+- **Differenziarsi da Pisciotta** (Biagio e Irene, 20/11/2026): il sito sembrava troppo simile, quindi si riprendono i colori del sito attuale: footer giallo `#FAB836` con testo scuro e barra finale `#ECA10E`, bottoni principali arancio `#EA5E3B`, sezione "Esplora la mappa" della Home su verde acqua `#26B2A6` (`.section--verde`).
 - **Identità:** logo, colori e font attuali di Ascea Turismo 360.
 - **Copy:** Ilaria, nel Google Doc "HOME PAGE" (id `1-HuzQ7jn6cmpHKQqZ-TgLsVv87oixffnznbl0SzsrEA`). Al 17/11/2026 contiene solo la Home: le voci del menu indicate lì sono diventate le pagine del sito.
 
@@ -15,7 +15,7 @@ Stesse tecnologie del sito RLB e del sito di Francesco, richiesto da Francesco i
 - Lenis per lo scroll fluido.
 - Font con `next/font`: Dosis (Google Fonts, variabile 200–800), lo stesso di Pisciotta, servito dal sito stesso.
 - Niente GSAP. Le comparse sono in CSS legate allo scroll (`animation-timeline: view()`); se il browser non le supporta, il contenuto resta visibile.
-- Apertura della Home (20/11/2026, richiesta di Biagio e Irene): **foto statica a tutta larghezza** come sul sito attuale, titolo "Ascea Turismo" (senza 360) in bianco a sinistra, bordo inferiore curvo. La foto è `home.hero.image` in `lib/site.ts`: per ora `panoramica-golfo`, da sostituire con una panoramica QCORE dall'alto del paese verso il golfo di Velia. La vecchia fascia di foto in loop (`HeroTrack`) è nella cronologia Git.
+- Apertura della Home (20/11/2026, richiesta di Biagio e Irene): **foto statica a tutta larghezza** come sul sito attuale, titolo "Ascea Turismo" (senza 360) in bianco a sinistra, bordo inferiore curvo. La foto è `home.hero.image` in `lib/site.ts`: `hero-ascea` (drone QCORE, Drive `cilento_horizon_ascea_2.webp`, scelta da Francesco il 20/11/2026). La vecchia fascia di foto in loop (`HeroTrack`) è nella cronologia Git.
 - Menu mobile: si apre sotto l'header, così l'hamburger resta visibile e diventa una X.
 - Mappa: MapLibre GL 5 (`components/MapView.tsx`), mappa vettoriale come Pisciotta. Stile OpenFreeMap "Positron" (gratuito, senza chiave) nella costante `MAP_STYLE`; Pisciotta usa MapTiler "dataviz-v4" con la sua chiave: con una chiave MapTiler di Ascea basta cambiare `MAP_STYLE`. Zoom con ctrl/⌘ + rotella (due dita su mobile), così la pagina continua a scorrere.
 
@@ -23,7 +23,7 @@ Stesse tecnologie del sito RLB e del sito di Francesco, richiesto da Francesco i
 - **Pagine:**
   - `app/page.tsx` (Home), `app/borghi/`, `app/borghi/[slug]/`, `app/luoghi/` (filtri per categoria), `app/luoghi/[slug]/`;
   - `app/blog/`, `app/il-progetto/`, `app/mappa/`, `app/contatti/`.
-  - **Menu** (20/11/2026): Home, Paesi (`/borghi/`), Scopri Ascea (`/luoghi/`), Blog, Mappa. "Il progetto" è tolto dal menu e dal footer; la pagina resta raggiungibile dai bottoni della Home.
+  - **Menu** (20/11/2026): Home, Paesi (`/borghi/`), Scopri Ascea (`/luoghi/`), Blog, Mappa. Gli stessi nomi sono nei titoli in apertura delle due pagine e nel percorso delle schede. "Il progetto" è tolto dal menu e dal footer; la pagina resta raggiungibile dai bottoni della Home.
   - **Dove soggiornare tolta per ora** (pagina e bottone nell'header, 18/11/2026): la pagina è nella cronologia Git (`app/dove-soggiornare/page.tsx`); dati (`soggiornare`, `strutture` in `lib/site.ts`) e stili (`.grid-strutture`, `.card-str`) restano pronti per rimetterla.
 - **Dati e testi:**
   - `lib/site.ts`: **tutti** i testi e i dati (home, borghi, luoghi, news, strutture, punti della mappa). Il copy di Ilaria va usato così com'è;
@@ -51,8 +51,7 @@ Stesse tecnologie del sito RLB e del sito di Francesco, richiesto da Francesco i
 ## Aperti
 - Testi delle pagine interne (borghi, Velia, Scogliera, Santuario, Il progetto, Dove soggiornare): da Ilaria.
 - Link Facebook e Instagram del footer.
-- Foto QCORE per la hero (panoramica dall'alto del paese verso il golfo di Velia): su Drive non trovata al 20/11/2026, da chiedere a Francesco.
-- Foto della brochure (Palazzo Ricci, Santuario) e due foto Drive non accessibili (`cilento_horizon_ascea_2.webp`, `7CCFEB48….JPEG`).
+- Foto della brochure (Palazzo Ricci, Santuario) e una foto Drive non accessibile (`7CCFEB48….JPEG`).
 - Foto di Ascea Paese, presa dalla Pro Loco: verificare che ritragga il capoluogo.
 - Posizioni della mappa indicative.
 - Microcopy aggiunto da validare con Ilaria: "Tutte le news", "Leggi l’articolo completo", "Esterno", "Scopri di più", "I luoghi simbolo di …", "Gli altri borghi", "Altri luoghi da vivere", "Dove si trova".

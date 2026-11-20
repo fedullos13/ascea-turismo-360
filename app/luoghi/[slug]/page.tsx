@@ -32,7 +32,7 @@ export default async function LuogoPage({ params }: PageProps<"/luoghi/[slug]">)
         eyebrow={`${l.cat} · ${b.name}`}
         crumbs={[
           { href: "/", label: "Home" },
-          { href: "/luoghi/", label: "Luoghi" },
+          { href: "/luoghi/", label: "Scopri Ascea" },
         ]}
       />
 
