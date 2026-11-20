@@ -3,14 +3,14 @@ import { nav, site } from "@/lib/site";
 import { IconFacebook, IconInstagram } from "@/components/Icons";
 import { asset } from "@/lib/base";
 
-// Footer dal doc di Ilaria: logo + frase, Navigazione, Informazioni, Seguici.
+// Footer dal doc di Ilaria: logo + frase, Navigazione, Informazioni, Seguici. Giallo come sul sito attuale.
 export function Footer() {
   return (
     <footer className="site-footer">
       <div className="wrap">
         <div className="footer-grid">
           <div>
-            <img className="footer-logo" src={asset("/brand/logo-ascea-turismo360-bianco.png")} alt="Ascea Turismo 360" width={725} height={250} loading="lazy" />
+            <img className="footer-logo" src={asset("/brand/logo-ascea-turismo360-nero.png")} alt="Ascea Turismo 360" width={725} height={250} loading="lazy" />
             <p className="footer-claim">{site.footerClaim}</p>
           </div>
           <div>
@@ -52,7 +52,9 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="footer-bottom">
+      </div>
+      <div className="footer-bottom">
+        <div className="wrap">
           © {new Date().getFullYear()} {site.name}. Tutti i diritti riservati.<span>|</span>by Qcore Agency
         </div>
       </div>

@@ -25,10 +25,9 @@ export const site = {
 
 export const nav = [
   { href: "/", label: "Home" },
-  { href: "/borghi/", label: "Borghi" },
-  { href: "/luoghi/", label: "Luoghi" },
+  { href: "/borghi/", label: "Paesi" },
+  { href: "/luoghi/", label: "Scopri Ascea" },
   { href: "/blog/", label: "Blog" },
-  { href: "/il-progetto/", label: "Il progetto" },
   { href: "/mappa/", label: "Mappa" },
 ];
 
@@ -45,7 +44,9 @@ export type Tone = keyof typeof tones;
 /* ------------------------------------------------------------------ HOME (copy di Ilaria) */
 export const home = {
   hero: {
-    title: ["Ascea Turismo", "360"],
+    title: "Ascea Turismo",
+    // foto statica a tutta larghezza, come sul sito attuale (20/11/2026): da sostituire con la panoramica QCORE
+    image: "panoramica-golfo" as PicName,
     subtitle: "La guida ufficiale di Ascea",
     ctaPrimary: { label: "Scopri il progetto", href: "/il-progetto/" },
     ctaSecondary: { label: "Scopri Ascea", href: "/borghi/" },
@@ -78,17 +79,6 @@ export const home = {
     cta: { label: "Apri la mappa completa", href: "/mappa/" },
   },
 };
-
-// Foto della fascia d'apertura, colonna per colonna (come Pisciotta Borgo Vivo)
-export const heroCols: { size?: "xl"; hideSm?: boolean; pics: { name: PicName; ratio: "tall" | "sq" | "wide" | "big" }[] }[] = [
-  { hideSm: true, pics: [{ name: "telegrafo", ratio: "tall" }] },
-  { pics: [{ name: "scogliera", ratio: "sq" }, { name: "sentiero-aurella", ratio: "wide" }] },
-  { size: "xl", pics: [{ name: "velia-parco", ratio: "big" }] },
-  { pics: [{ name: "palazzo-ricci", ratio: "sq" }, { name: "catona", ratio: "wide" }] },
-  { pics: [{ name: "sentiero-innamorati", ratio: "tall" }] },
-  { pics: [{ name: "santuario-carmine", ratio: "tall" }] },
-  { hideSm: true, pics: [{ name: "ascea-marina", ratio: "sq" }, { name: "mandia", ratio: "wide" }] },
-];
 
 /* ------------------------------------------------------------------ BORGHI (descrizioni di Ilaria) */
 export type Borgo = {

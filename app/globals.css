@@ -32,6 +32,7 @@
   --primario-hover: #084E68;
   --arancio-testo: #C9431F;
   --giallo-testo: #B87A06;
+  --giallo-scuro: #ECA10E;     /* barra in fondo al footer, dal sito attuale */
   --verde-testo: #1A8379;
 
   --inchiostro: #1B1D1F;      /* nero del logotipo */
@@ -100,8 +101,12 @@ h1, h2, h3, h4 { color: var(--primario); font-weight: 700; line-height: 1.12; le
   transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
 }
 .btn:hover { background: var(--primario); color: #fff; }
-.btn--pieno { background: var(--primario); color: #fff; }
-.btn--pieno:hover { background: var(--primario-hover); border-color: var(--primario-hover); }
+/* bottone principale arancio, come sul sito attuale */
+.btn--pieno { background: var(--arancio); border-color: var(--arancio); color: #fff; font-weight: 600; }
+.btn--pieno:hover { background: var(--arancio-testo); border-color: var(--arancio-testo); }
+/* su foto scura */
+.btn--chiaro { border-color: #fff; color: #fff; font-weight: 600; }
+.btn--chiaro:hover { background: #fff; border-color: #fff; color: var(--primario); }
 .btn--arancio { border-color: var(--arancio); color: var(--arancio-testo); }
 .btn--arancio:hover { background: var(--arancio); border-color: var(--arancio); color: #fff; }
 .btn--arancio-pieno { background: var(--arancio); border-color: var(--arancio); color: #fff; }
@@ -144,7 +149,7 @@ h1, h2, h3, h4 { color: var(--primario); font-weight: 700; line-height: 1.12; le
 .mobile-menu li + li { margin-top: .6rem; }
 .mobile-menu a { color: #fff; font-size: 1.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: .01em; }
 .mobile-menu .btn { border-color: #fff; color: #fff; }
-.mobile-menu .btn--arancio-pieno { border-color: var(--arancio); }
+.mobile-menu .btn--arancio-pieno, .mobile-menu .btn--pieno { border-color: var(--arancio); }
 .mobile-menu .header-cta { flex-direction: column; align-items: center; }
 
 main { padding-top: var(--header-h); }
@@ -156,31 +161,27 @@ main { padding-top: var(--header-h); }
   .brand img { width: 132px; }
 }
 
-/* ---------- Hero Home ---------- */
-.hero { background: var(--sabbia); padding-block: clamp(2.5rem, 5vw, 3.5rem) clamp(4rem, 7vw, 6rem); overflow: hidden; }
-/* due copie identiche affiancate: la fascia scorre di una copia e riparte, in loop continuo */
-.hero-track { display: flex; width: max-content; will-change: transform; }
-.hero-group {
-  --gap: clamp(1rem, 2.2vw, 2.25rem);
-  display: flex; align-items: center; gap: var(--gap);
-  width: 128vw; padding-right: var(--gap); flex-shrink: 0;
+/* ---------- Hero Home ----------
+   Foto statica a tutta larghezza con il titolo sopra e il bordo inferiore curvo, come sul sito attuale. */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: clamp(520px, calc(100svh - var(--header-h)), 860px);
+  display: flex; align-items: center;
+  padding-block: clamp(4rem, 9vw, 7rem) clamp(6rem, 12vw, 9rem);
+  background: var(--primario); color: #fff;
+  clip-path: ellipse(max(130%, 900px) 100% at 50% 0%);
 }
-.hero-col { flex: 1 1 0; display: flex; flex-direction: column; gap: clamp(1rem, 2.2vw, 2.25rem); }
-.hero-col--xl { flex-grow: 2; }
-.hero-col figure { border-radius: var(--raggio); overflow: hidden; background: #e6e0d7; }
-.hero-col img { width: 100%; height: 100%; object-fit: cover; }
-.r-tall { aspect-ratio: 74 / 95; }
-.r-sq { aspect-ratio: 1 / 1; }
-.r-wide { aspect-ratio: 225 / 142; }
-.r-big { aspect-ratio: 1 / 1.02; }
-.hero-copy { text-align: center; margin-top: clamp(2rem, 4vw, 3rem); }
-.hero-copy .lead { margin-top: .75rem; font-size: clamp(1.2rem, 2vw, 1.6rem); color: var(--inchiostro); opacity: .8; }
-.hero-copy .btn-row { margin-top: 2.25rem; }
-
-@media (max-width: 760px) {
-  .hero-group { width: 230vw; }
-  .hero-col--hide-sm { display: none; }
+.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; z-index: -2; }
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg, rgba(8, 30, 42, .72) 0%, rgba(8, 30, 42, .45) 45%, rgba(8, 30, 42, .08) 80%),
+              linear-gradient(0deg, rgba(8, 30, 42, .35) 0%, transparent 40%);
 }
+.hero-copy { max-width: calc(var(--contenitore) + 2 * var(--gutter)); min-width: 0; }
+.hero-copy > * { max-width: 40rem; }
+.hero .h-display { color: #fff; font-weight: 700; text-shadow: 0 2px 24px rgba(0, 0, 0, .25); }
+.hero-copy .lead { margin-top: 1rem; font-size: clamp(1.2rem, 2vw, 1.6rem); color: rgba(255, 255, 255, .95); }
+.hero-copy .btn-row { margin-top: 2.25rem; justify-content: flex-start; }
 
 /* ---------- Split (testo + immagine) ---------- */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
@@ -368,20 +369,21 @@ main { padding-top: var(--header-h); }
 @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--primario); color: rgba(255,255,255,.88); padding-top: clamp(3rem, 6vw, 4.5rem); margin-top: 0; }
+/* giallo del logo con testo scuro, come sul sito attuale */
+.site-footer { background: var(--giallo); color: var(--inchiostro); padding-top: clamp(3rem, 6vw, 4.5rem); margin-top: 0; }
 .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 2.5rem; }
-.footer-grid h2 { color: #fff; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 1.1rem; }
+.footer-grid h2 { color: var(--inchiostro); font-size: 1.05rem; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 1.1rem; }
 .footer-logo { width: 190px; margin-bottom: 1.25rem; }
-.footer-claim { font-size: 1.1rem; line-height: 1.5; color: #fff; max-width: 20rem; }
+.footer-claim { font-size: 1.1rem; line-height: 1.5; color: var(--inchiostro); max-width: 20rem; }
 .footer-grid li + li { margin-top: .55rem; }
-.footer-grid a:hover { color: #fff; text-decoration: underline; }
+.footer-grid a:hover { text-decoration: underline; }
 .social { display: flex; gap: .9rem; }
-.social a { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; transition: background .2s; }
-.social a:hover { background: var(--azzurro); }
+.social a { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--inchiostro); color: var(--giallo); transition: background .2s, color .2s; }
+.social a:hover { background: var(--arancio); color: #fff; }
 .footer-enti { margin-top: 1.5rem; font-size: .88rem; line-height: 1.5; }
 .footer-enti .loghi { display: flex; gap: .75rem; margin-top: .75rem; align-items: center; }
 .footer-enti .loghi img { height: 44px; width: auto; background: #fff; border-radius: .4rem; padding: .25rem .4rem; }
-.footer-bottom { margin-top: clamp(2.5rem, 5vw, 3.5rem); border-top: 1px solid rgba(255,255,255,.22); padding-block: 1.5rem; text-align: center; font-size: .85rem; }
+.footer-bottom { margin-top: clamp(2.5rem, 5vw, 3.5rem); background: var(--giallo-scuro); padding-block: 1.25rem; text-align: center; font-size: .85rem; }
 .footer-bottom span { margin-inline: .5rem; opacity: .6; }
 @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
@@ -389,7 +391,7 @@ main { padding-top: var(--header-h); }
 
 /* ---------- Foto (componente Pic) ---------- */
 picture { display: contents; }
-.hero-col figure img, .split__media img, .card-borgo__img img, .card-luogo__img img,
+.split__media img, .card-borgo__img img, .card-luogo__img img,
 .card-news__img img, .card-str__img img { width: 100%; height: 100%; object-fit: cover; }
 .page-hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.04); }
 
@@ -412,11 +414,6 @@ html.lenis, html.lenis body { height: auto; }
   }
 }
 @keyframes reveal-up { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
-/* fascia d'apertura: le foto scorrono verso sinistra in loop, come su Pisciotta (rallenta al passaggio del mouse) */
-@media (prefers-reduced-motion: no-preference) {
-  .hero-track { animation: hero-loop 26s linear infinite; }
-}
-@keyframes hero-loop { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
 
 /* ?static: pagina già completa, per gli screenshot di controllo */
 :root[data-static] *, :root[data-static] *::before, :root[data-static] *::after { animation: none !important; }

@@ -2,41 +2,26 @@ import Link from "next/link";
 import { Pic } from "@/components/Pic";
 import { CardBorgo, CardLuogo, CardNews, SectionHead } from "@/components/Cards";
 import { MapView } from "@/components/MapView";
-import { HeroTrack } from "@/components/HeroTrack";
-import { borghi, heroCols, home, luoghi, news } from "@/lib/site";
+import { borghi, home, luoghi, news } from "@/lib/site";
 
 // Home: stessa sequenza di sezioni di pisciottaborgovivo.it, copy di Ilaria
 export default function Home() {
   const { hero, intro } = home;
   return (
     <>
-      {/* Apertura: collage di foto che scorre in loop + titolo */}
+      {/* Apertura: foto statica a tutta larghezza con il titolo sopra, come sul sito attuale */}
       <section className="hero" aria-labelledby="hero-title">
-        <HeroTrack>
-          {[0, 1].map((copy) => (
-            <div key={copy} className="hero-group">
-              {heroCols.map((col, i) => (
-                <div key={i} className={`hero-col${col.size === "xl" ? " hero-col--xl" : ""}${col.hideSm ? " hero-col--hide-sm" : ""}`}>
-                  {col.pics.map((p) => (
-                    <figure key={p.name} className={`r-${p.ratio}`}>
-                      <Pic name={p.name} sizes={col.size === "xl" ? "(max-width: 760px) 60vw, 25vw" : "(max-width: 760px) 30vw, 13vw"} priority />
-                    </figure>
-                  ))}
-                </div>
-              ))}
-            </div>
-          ))}
-        </HeroTrack>
+        <Pic name={hero.image} alt="" sizes="100vw" priority className="hero__img" />
         <div className="wrap hero-copy">
           <h1 id="hero-title" className="h-display">
-            {hero.title[0]} <b>{hero.title[1]}</b>
+            {hero.title}
           </h1>
           <p className="lead">{hero.subtitle}</p>
           <div className="btn-row">
             <Link className="btn btn--pieno" href={hero.ctaPrimary.href}>
               {hero.ctaPrimary.label}
             </Link>
-            <Link className="btn btn--arancio" href={hero.ctaSecondary.href}>
+            <Link className="btn btn--chiaro" href={hero.ctaSecondary.href}>
               {hero.ctaSecondary.label}
             </Link>
           </div>

@@ -31,7 +31,7 @@ export function Header() {
   const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
   const ctas = (
     <div className="header-cta">
-      <Link className="btn" href="/contatti/" onClick={() => setOpen(false)}>
+      <Link className="btn btn--pieno" href="/contatti/" onClick={() => setOpen(false)}>
         Contatti
       </Link>
     </div>
